@@ -1,0 +1,10 @@
+<br><br>
+<input type="text" [(ngModel)] = "id" />
+<h2>String Will Fetch From Database : {{name}}</h2>
+<div>
+  <button (click) = "getDataFromDbWithAwait()">With Await</button>
+</div>
+<br><br>
+<div>
+  <button (click) = "getDataFromDbWithCallback()">With Then</button>
+</div>

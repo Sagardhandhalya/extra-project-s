@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Searce Keep</title>
+    
+</head>
+<body>
+  <div class="container registration-form">
+    <form #myform = ngForm class="form-signup" name="myform" id="myform" method="POST" (ngSubmit)=Register()>
+        <div class="form-icon">
+            <span><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></span>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item text-white" id="firstname" name="firstname" placeholder="Firstname" required autofocus pattern="[a-zA-Z][a-zA-Z]+" [(ngModel)] = "userregister.firstname" #firstname='ngModel'>
+            <div class="text-danger" *ngIf="(firstname.touched || firstname.dirty) && !firstname.valid">
+              <div *ngIf="firstname.errors.required">Firstname is required</div>
+              <div *ngIf="firstname.errors.pattern">Firstname is not valid</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item text-white" id="lastname" name="lastname" placeholder="Lastname"  #lastname='ngModel' [(ngModel)]=userregister.lastname required pattern="[a-zA-Z][a-zA-Z]+">
+            <div class="text-danger" *ngIf="(lastname.touched || lastname.dirty) && !lastname.valid">
+              <div *ngIf="lastname.errors.required">Lastname is required</div>
+              <div *ngIf="lastname.errors.pattern">Lastname is not valid</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item text-white" id="username" name="username" placeholder="Username" #username = 'ngModel' [(ngModel)]=userregister.username required pattern="[a-zA-Z][a-zA-Z]+" >
+            <div class="text-danger" *ngIf="(username.touched || username.dirty) && !username.valid">
+              <div *ngIf="username.errors.required">Username is required</div>
+              <div *ngIf="username.errors.pattern">Username is not valid</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control item text-white" id="password" name="password" placeholder="Password" minlength=8 #password='ngModel' [(ngModel)]=userregister.password required>
+            <div class="text-danger" *ngIf="(password.touched || password.dirty) && !password.valid">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength">Password should be 8 characters long</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item text-white" id="email" name='email' placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required #email = 'ngModel' [(ngModel)]=userregister.email>
+            <div class="text-danger" *ngIf="(email.touched || email.dirty) && !email.valid">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.minlength">Email should be 8 characters long</div>
+            </div>
+        </div>
+      
+        <div class="form-group">
+            <button type="submit" class="btn btn-block create-account" [disabled] = !myform.valid>Create Account</button>
+        </div>
+    </form>
+    <!-- <div class="social-media">
+        <h5>Sign up with social media</h5>
+        <div class="social-icons">
+            <a href="#"><i class="fa fa-facebook-official" aria-hidden="true" title="Facebook"></i></a>
+            <a href="#"><i class="fa fa-google" aria-hidden="true" title="Google"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true" title="Twitter"></i></a>
+        </div>
+    </div> 
+    
+    
+      <div class="form-group">
+            <input type="text" class="form-control item" minlength=10 maxlength=10 id="mobile" name="mobile" placeholder="Mobile Number" pattern='^[0-9]+$' #mobile='ngModel' [(ngModel)] = userregister.mobile required>
+            <div class="text-danger" *ngIf="(mobile.touched || mobile.dirty) && !mobile.valid">
+              <div *ngIf="mobile.errors.required">Mobile is required</div>
+              <div *ngIf="mobile.errors.minlength">Mobile should be of 10 characters</div>
+              <div *ngIf="mobile.errors.pattern">Mobile is not valid</div>
+            </div>
+        </div>
+    -->
+
+
+</div>
+</body>

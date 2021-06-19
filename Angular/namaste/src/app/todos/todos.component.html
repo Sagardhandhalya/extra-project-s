@@ -1,0 +1,24 @@
+
+<table class="table table-light">
+  <tbody>
+    <tr *ngFor="let todo of todos">
+      <td *ngIf = "todo.completed then done else notdone"></td>
+
+      <ng-template #notdone >
+      
+          <td  >{{todo.title}}</td>
+        
+      </ng-template>
+
+      <ng-template #done >
+       
+          <s><td class="bg-success text-white">{{todo.title}}</td></s>
+       
+      </ng-template>
+      <td>
+       
+        <button class="btn btn-danger" (click)="checked(todo)">Done</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

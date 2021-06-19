@@ -1,0 +1,13 @@
+
+
+<app-header [sidebarOn]="sidebaropen" (sidebarToggleEvent)="toggle($event)" ></app-header>
+<div class="d-flex container " style="margin-top: 70px">
+<app-sidebar class="shadow left" [ngClass]="{'sidebaroff': !sidebaropen}"></app-sidebar>
+<div class="right" [ngClass]="{'sidebarmargin': sidebaropen}">
+<router-outlet></router-outlet>
+</div>
+</div>
+
+
+
+

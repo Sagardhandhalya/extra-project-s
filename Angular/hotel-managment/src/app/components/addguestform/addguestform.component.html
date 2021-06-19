@@ -1,0 +1,224 @@
+<div class="card mb-5" style="margin-bottom: 200px">
+  <!-- <button (click)="log(newtenant)">dsd</button> -->
+
+  <div class="card-body">
+    <form [formGroup]="newtenant" (ngSubmit)="submit(newtenant)">
+      <h4 class="text-center text-dark">Head Information </h4>
+      <hr style="border: 2px solid rgb(11, 15, 209);margin-bottom: 50px;">
+      <div formGroupName="HeadDetails">
+        
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label> Name : </label>
+              <input
+                class="form-control"
+                type="text"
+                formControlName="headName"
+                placeholder="Raj Khurana"
+              />
+             <span class="text-danger" *ngIf="headName.invalid && (headName.dirty || headName.touched) ">{{headName.errors.err}}</span>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Room No : </label>
+              <input
+                class="form-control"
+                type="text"
+                formControlName="roomNo"
+              />
+              <span class="text-danger" *ngIf="roomNO.invalid && (roomNO.dirty || roomNO.touched) ">{{roomNO.errors.err}}</span>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Address : </label>
+          <textarea
+            class="form-control"
+            formControlName="address"
+            rows="3"
+          ></textarea>
+          <span class="text-danger" *ngIf="address.invalid && (address.dirty || address.touched) "> * address is a required field</span>
+
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Gender : </label>
+              <select
+                id="my-select"
+                class="form-control"
+                formControlName="headGender"
+              >
+                <option selected>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Contact No: </label>
+              <input
+                class="form-control"
+                type="text"
+                formControlName="headContactno"
+                placeholder="7890645643"
+              />
+              <span class="text-danger" *ngIf="headContactNo.invalid && (headContactNo.dirty || headContactNo.touched) ">{{headContactNo.errors.err}}</span>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label> Checkin Data : </label>
+              <input
+                class="form-control"
+                type="date"
+                formControlName="checkinDate"
+                value=""
+              />
+              <span class="text-danger" *ngIf="checkinDate.invalid && (checkinDate.dirty || checkinDate.touched) ">{{checkinDate.errors.err}}</span>
+
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label> Checkout Date : </label>
+              <input
+                class="form-control"
+                type="date"
+                formControlName="checkoutDate"
+              />
+              <span class="text-danger" *ngIf="checkoutDate.invalid && (checkoutDate.dirty || checkoutDate.touched) ">{{checkoutDate.errors.err}}</span>
+
+            </div>
+          </div>
+          <span class="text-danger " *ngIf="headDetails.invalid  && (headDetails.dirty || headDetails.touched) ">{{headDetails.errors?.err}}</span>
+
+        </div>
+      </div>
+      <h4 class="text-center text-dark mt-5">Spouse Information </h4>
+      <hr style="border: 2px solid rgb(11, 15, 209);margin-bottom: 50px;">
+      <div formGroupName="SpouseDetails">
+       
+        <div class="form-group">
+          <label> Name : </label>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="spouseName"
+            placeholder="Tripti Khurana"
+          />
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Gender :</label>
+              <select class="form-control" formControlName="spouseGender">
+                <option >Male</option>
+                <option selected>Female</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Contact No: </label>
+              <input
+                class="form-control"
+                type="text"
+                formControlName="spouseContactno"
+                placeholder="9087123465"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="text-center text-dark mt-5"> Children Information </h4>
+      <hr style="border: 2px solid rgb(11, 15, 209);margin-bottom: 50px;">
+      <div formArrayName="ChildrenDetails">
+       
+        <div *ngFor="let child of ChildrenDetails.controls; let i = index">
+
+          <div class="d-flex justify-content-between">
+            <h2>{{i+1}}.</h2>
+          
+
+            <div style="cursor: pointer;width:20px" (click)="removeChild(i)"> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+              </svg>
+            
+           </div>
+          </div>
+          
+
+          <div [formGroupName]="i">
+            <div class="form-group">
+              <label> Name : </label>
+              <input
+                class="form-control"
+                type="text"
+                formControlName="childName"
+              />
+              <span class="text-danger" *ngIf="ChildrenDetails.controls[i].get('childName').invalid && (ChildrenDetails.controls[i].get('childName').dirty || ChildrenDetails.controls[i].get('childName').touched) ">{{ChildrenDetails.controls[i].get('childName').errors.err}}</span>
+
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Gender :</label>
+                  <select class="form-control" formControlName="childGender">
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Age : </label>
+                  <input
+                    class="form-control"
+                    type="number"
+                    formControlName="childAge"
+                  />
+                  <span class="text-danger" *ngIf="ChildrenDetails.controls[i].get('childAge').invalid && (ChildrenDetails.controls[i].get('childAge').dirty || ChildrenDetails.controls[i].get('childAge').touched) ">{{ChildrenDetails.controls[i].get('childAge').errors.err}}</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <hr style="border: 1px solid rgb(154, 221, 187);margin-bottom: 50px;">
+        </div>
+        <div class="d-flex justify-content-center align-item-center">
+          <button (click)="addChild()" class="btn btn-info" type="button">
+            Add Child
+          </button>
+        </div>
+        <hr style="border: 2px solid rgb(11, 15, 209);margin-bottom: 50px;">
+      </div>
+
+      <button
+        class="btn btn-primary"
+        [disabled]="!newtenant.valid"
+        type="submit"
+      >
+        Submit
+      </button>
+      
+    </form>
+  </div>
+  
+</div>

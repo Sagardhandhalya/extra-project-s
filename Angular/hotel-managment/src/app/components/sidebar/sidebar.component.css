@@ -1,0 +1,37 @@
+.nav-item{
+   color: black;
+ }
+
+ul,li{
+    list-style: none;
+}
+
+ .nav-link:hover{
+    background-color: white;
+    border-right: 7px green solid; 
+ }
+
+ 
+  
+  .nav-link-svg{
+      width: 15%;
+      height: 15%;
+      fill: rgb(19, 5, 19);
+      margin-right: 5%;
+      
+  }
+
+  .nav-link-text{
+    line-height: 25px;
+    color: black;
+     
+  }
+  
+  .hotel-avatar{
+      width: 80%;
+      height: 80%;
+      border: none;
+      margin: 25px;
+      background-color: white;
+      border-radius: 50%;
+  }

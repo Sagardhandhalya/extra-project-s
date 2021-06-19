@@ -1,0 +1,22 @@
+.nav-item{
+    color: black;
+  }
+ 
+ ul,li{
+     list-style: none;
+ }
+ 
+  .nav-link:hover{
+     background-color: rgb(59, 59, 58);
+     border-right: 7px rgb(218, 218, 135) solid; 
+     border-top-right-radius: 10%;
+     border-bottom-right-radius: 10%;
+  }
+ 
+   .nav-link-text{
+     line-height: 30px;
+     color: rgb(232,234,237);
+      
+   }
+   
+  

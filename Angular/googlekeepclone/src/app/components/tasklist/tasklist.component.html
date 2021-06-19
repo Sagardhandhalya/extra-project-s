@@ -1,0 +1,310 @@
+<div class=" mt-1">
+  <ng-container>
+    <div *ngFor="let task of taskList ; let taskid=index" style="display:inline-block">
+
+      <div style="position: relative;">
+
+        <div *ngIf="task.is_pinned" class="mt-4" style="margin-left:30px; margin-bottom: 30px;">
+
+          <div style="position: absolute; right: 0; top: 0; cursor: pointer; z-index: 2;" (click)="deletetask(task.id)"
+            [ngClass]="{'vis':hoverval}"> <i class="fa fa-2x fa-times-circle-o" aria-hidden="true"
+              style="color: cornsilk; z-index: 3;"></i> </div>
+
+
+          <div class=" shadow-xl w-200  p-3 text-white border shadow custom" [style.backgroundColor]="task.color">
+            <div>
+
+              <span style="margin-bottom: 20px; font-size: 20px;" data-toggle="modal" data-target="#exampleModalCenter"
+                (click)=createDefaultForm(task.id)>
+                {{task.title}} </span>
+              <div *ngFor="let todo of task.todos ; let todoid=index">
+                <p *ngIf="!todo.is_completed && todo.content">
+                  <input *ngIf="!task.is_text" type="checkbox"
+                    (change)="togglecheckbox(todo)" class="mr-4">
+                  <span style="font-size: 15px;" (click)=createDefaultForm(task.id) data-toggle="modal"
+                    data-target="#exampleModalCenter" [ngClass]="{'done':todo.is_completed}">{{todo.content}}</span>
+                </p>
+              </div>
+              <hr>
+              <div *ngFor="let todo of task.todos ; let todoid=index">
+
+                <p *ngIf="todo.is_completed && todo.content">
+                  <!-- <hr *ng> -->
+                  <input *ngIf="!task.is_text" type="checkbox" [checked]="todo.is_completed"
+                    (change)="togglecheckbox(todo)" class="mr-4"> <span
+                    style="font-size: 15px;" (click)=createDefaultForm(task.id) data-toggle="modal"
+                    data-target="#exampleModalCenter" [ngClass]="{'done':todo.is_completed}">{{todo.content}}</span>
+                </p>
+              </div>
+
+              <div>
+                <div class="remindercss" *ngIf="task.reminder!=null && !task.is_reminder_seen"> 
+                  <span>
+                    <i class="fa fa-clock-o" aria-hidden="true" style="padding-right: 10px;"></i>
+                    <span>{{task.reminder}}</span>
+                  </span>
+                  <!-- <span (click)="clearReminder()"><i class="fa fa-times"></i></span> -->
+                  </div>
+              </div>
+
+              <div style="margin-top: 10px;">
+
+                <input type="color" style=" height: 30px; width: 30px; padding: 0px; margin: 0px;"
+                  (input)="changecolor(task.id,$event.target.value)" [value]="task.color">
+                <span class="ml-3 mr-3">
+                  <a *ngIf=task.is_archived style="cursor: pointer;"
+                    (click)="togglearchiveidwise(task.id , task.is_archived)"><i class="fa fa-archive"
+                      aria-hidden="true" style="color: lemonchiffon;opacity:100%; font-size: 25px;"></i></a>
+                  <a *ngIf=!task.is_archived style="cursor: pointer;"
+                    (click)="togglearchiveidwise(task.id,task.is_archived)"><i class="fa fa-archive" aria-hidden="true"
+                      style="color: lemonchiffon;opacity:30%; font-size: 25px;"></i></a>
+                </span>
+                <span class="ml-2 mr-3">
+                  <a *ngIf=!task.is_text style="cursor: pointer;" (click)="toggletextidwise(task.id , task.is_text)"><i
+                      class="fa fa-check-square" aria-hidden="true"
+                      style="text-align: right ;color: lemonchiffon;opacity:90%; font-size: 25px;"></i></a>
+                  <a *ngIf=task.is_text style="cursor: pointer;" (click)="toggletextidwise(task.id,task.is_text)"><i
+                      class="fa fa-check-square" aria-hidden="true"
+                      style="text-align: right ;color: lemonchiffon;opacity:10%; font-size: 25px;"></i></a>
+                </span>
+                <!-- <a style="cursor: pointer;" class="ml-1 mr-2"><i class="fa fa-bell" aria-hidden="true" -->
+                    <!-- style="text-align: right ;color: lemonchiffon;opacity:90%; font-size: 25px;"></i></a> -->
+                <span>
+                  <a *ngIf=task.is_pinned style="cursor: pointer;"
+                    (click)="togglepinidwise(task.id , task.is_pinned )"><i class="fa fa-thumb-tack" aria-hidden="true"
+                      style="text-align: right ;color: lemonchiffon;opacity:90%; font-size: 25px;"></i></a>
+                  <a *ngIf=!task.is_pinned style="cursor: pointer;"
+                    (click)="togglepinidwise(task.id, task.is_pinned)"><i class="fa fa-thumb-tack" aria-hidden="true"
+                      style="text-align: right ;color: lemonchiffon;opacity:30%; font-size: 25px;"></i></a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- <div>
+    <h5 style="color: aliceblue;"> unpinned values </h5>
+  </div> -->
+
+  <!-- unpinned values -->
+  <div style="margin-top: 30px;">
+    <div *ngFor="let task of taskList ; let taskid=index" style="margin-top:30px ; display: inline-block;"
+      class="customcard">
+      <div *ngIf="!task.is_archived" style="position: relative;">
+
+        <div *ngIf="!task.is_pinned" style="margin-left:30px;">
+
+          <div class=" shadow-xl w-200  p-3 text-white border shadow custom" [style.backgroundColor]="task.color">
+            <div>
+              <div style="position: absolute; right: -1px; top: -3px; cursor: pointer; z-index: 2;"
+                (click)="deletetask(task.id)" [ngClass]="{'vis':hoverval}"> <i class="fa fa-2x fa-times-circle-o"
+                  aria-hidden="true" style="color: cornsilk; z-index: 3;"></i> </div>
+              <span style="margin-bottom: 20px; font-size: 20px;" data-toggle="modal" data-target="#exampleModalCenter"
+                (click)=createDefaultForm(task.id)>
+                {{task.title}} </span>
+
+              <div *ngFor="let todo of task.todos ; let todoid=index">
+                <p *ngIf="!todo.is_completed && todo.content">
+                  <input *ngIf="!task.is_text" type="checkbox"
+                    (change)="togglecheckbox(todo)" class="mr-4">
+                  <span style="font-size: 15px;" (click)=createDefaultForm(task.id) data-toggle="modal"
+                    data-target="#exampleModalCenter" [ngClass]="{'done':todo.is_completed}">{{todo.content}}</span>
+                </p>
+              </div>
+              <hr>
+              <div *ngFor="let todo of task.todos ; let todoid=index">
+
+                <p *ngIf="todo.is_completed && todo.content">
+                  <!-- <hr *ng> -->
+                  <input *ngIf="!task.is_text" type="checkbox" [checked]="todo.is_completed"
+                    (change)="togglecheckbox(todo)" class="mr-4"> <span
+                    style="font-size: 15px;" (click)=createDefaultForm(task.id) data-toggle="modal"
+                    data-target="#exampleModalCenter" [ngClass]="{'done':todo.is_completed}">{{todo.content}}</span>
+                </p>
+              </div>
+
+              <div>
+                <div class="remindercss" *ngIf="task.reminder!=null && !task.is_reminder_seen"> 
+                  <span>
+                    <i class="fa fa-clock-o" aria-hidden="true" style="padding-right: 10px;"></i>
+                    <span>{{task.reminder}}</span>
+                  </span>
+                  <!-- <span (click)="clearReminder()"><i class="fa fa-times"></i></span> -->
+                  </div>
+              </div>
+
+              <div style="margin-top: 10px;">
+                <input type="color" style=" height: 30px; width: 30px; padding: 0px; margin: 0px;"
+                  (input)="changecolor(task.id,$event.target.value)" [value]="task.color">
+                <span class="ml-3 mr-3">
+                  <a *ngIf=task.is_archived style="cursor: pointer;"
+                    (click)="togglearchiveidwise(task.id,task.is_archived)"><i class="fa fa-archive" aria-hidden="true"
+                      style="color: lemonchiffon;opacity:100%; font-size: 25px;"></i></a>
+                  <a *ngIf=!task.is_archived style="cursor: pointer;"
+                    (click)="togglearchiveidwise(task.id,task.is_archived)"><i class="fa fa-archive" aria-hidden="true"
+                      style="color: lemonchiffon;opacity:30%; font-size: 25px;"></i></a>
+                </span>
+                <span class="ml-2 mr-3">
+                  <a *ngIf=!task.is_text style="cursor: pointer;" (click)="toggletextidwise(task.id , task.is_text)"><i
+                      class="fa fa-check-square" aria-hidden="true"
+                      style="text-align: right ;color: lemonchiffon;opacity:90%; font-size: 25px;"></i></a>
+                  <a *ngIf=task.is_text style="cursor: pointer;" (click)="toggletextidwise(task.id,task.is_text)"><i
+                      class="fa fa-check-square" aria-hidden="true"
+                      style="text-align: right ;color: lemonchiffon;opacity:10%; font-size: 25px;"></i></a>
+                </span>
+                <!-- <a style="cursor: pointer;" class="ml-1 mr-2"><i class="fa fa-bell" aria-hidden="true"
+                    style="text-align: right ;color: lemonchiffon;opacity:90%; font-size: 25px;"></i></a> -->
+                <span>
+                  <a *ngIf=task.is_pinned style="cursor: pointer;" (click)="togglepinidwise(task.id,task.is_pinned)"><i
+                      class="fa fa-thumb-tack" aria-hidden="true"
+                      style="text-align: right ;color: lemonchiffon;opacity:90%; font-size: 25px;"></i></a>
+                  <a *ngIf=!task.is_pinned style="cursor: pointer;" (click)="togglepinidwise(task.id,task.is_pinned)"><i
+                      class="fa fa-thumb-tack" aria-hidden="true"
+                      style="text-align: right ;color: lemonchiffon;opacity:30%; font-size: 25px;"></i></a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- modal -->
+
+
+
+
+
+<div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document" style="margin-top: 20vh; margin-left :30vw">
+    <div class="modal-content" style="background-color:#212521 ;opacity: 90%; width: 700px;">
+      <form [formGroup]="newTask" method="post">
+        <div class="modal-header">
+
+          <input type="text" class="titleinput" placeholder="Title" formControlName="title" />
+          <a *ngIf="newTask.get('is_pinned').value" style="cursor: pointer;" (click)="togglepin()"><i
+              class="fa fa-thumb-tack" aria-hidden="true"
+              style="text-align: right ;color: lemonchiffon;opacity:90%; font-size: 25px;"></i></a>
+          <a *ngIf="!newTask.get('is_pinned').value" style="cursor: pointer;" (click)="togglepin()"><i
+              class="fa fa-thumb-tack" aria-hidden="true"
+              style="text-align: right ;color: lemonchiffon;opacity:10%; font-size: 25px;"></i></a>
+
+
+          <!-- <span style="font-size: 25px; color: blanchedalmond; padding-left: 60px;"> Modal to edit </span> -->
+
+        </div>
+
+        <div class="modal-body">
+
+
+
+
+          <div formArrayName="todos">
+            <div *ngFor="let todo of todos.controls; let i = index">
+              <div *ngIf="!todo.get('is_completed').value" class="todoform" [formGroupName]="i">
+                <div *ngIf="todo.get('content').value.length>0">
+                  <input type="checkbox" formControlName="is_completed" class="checkmas" [style.display]="displayvar" (change) = "toggleCheckBoxInModel(todo.value)" />
+                </div>
+                <div *ngIf="todo.get('content').value.length==0 && this.todo.pristine"
+                  style="color: ivory; font-weight: lighter;">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+                <input class="custominput" type="text" placeholder="Add Todo" formControlName='content'
+                  (keypress)="addTodo(i)" (blur)="saveTodo(todo.value)"  [ngClass]="{'done':todo.get('is_completed').value}" />
+                <div style="cursor: pointer; width: 20px" (click)="deleteTodo(todo.value , i)">
+
+                  <span *ngIf="todo.get('content').value.length>0" aria-hidden="true"
+                    style="color: ivory; font-size: 25px;">&times;</span>
+                </div>
+              </div>
+            </div>
+            <p style="color: rgb(155, 174, 197);font-size: small;cursor: pointer; margin-bottom: 5px;"
+              (click)=toggleCompleted()> {{icon}}
+              completed </p>
+            <div *ngIf="showComple">
+
+              <div *ngFor="let todo of todos.controls; let i = index">
+                <div *ngIf="todo.get('is_completed').value" class="todoform" [formGroupName]="i">
+                  <input type="checkbox" formControlName="is_completed" [style.display]="displayvar" (change)='toggleCheckBoxInModel(todo.value)' />
+                  <input class="custominput" type="text" placeholder="Add Todo " formControlName='content'
+                    (blur)="addTodo(i)" (blur)="saveTodo(todo.value)" [ngClass]="{'done':todo.get('is_completed').value}" />
+                  <div style="cursor: pointer; width: 20px" (click)="deleteTodo(i)">
+                    <span aria-hidden="true" style="color: ivory; font-size: 25px;">&times;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="remindercs" *ngIf="newTask.get('reminder').value"> 
+            <span>
+              <i class="fa fa-clock-o" aria-hidden="true" style="padding-right: 10px;"></i>
+              <span>{{this.newTask.get('reminder').value}}</span>
+            </span>
+            <!-- <span (click)="clearReminder()"><i class="fa fa-times"></i></span> -->
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <div style="width: 100%;display: flex; justify-content:space-between;">
+            <span class=" d-flex ml-5" style="width:70%;justify-content:start ">
+              <input type="color" formControlName="color"
+                style=" height: 30px; width: 30px; padding: 0px; margin: 0px;">
+              <span class="ml-4 mr-3">
+                <a *ngIf=archivevar style="cursor: pointer;" (click)="togglearchive()"><i class="fa fa-archive"
+                    aria-hidden="true" style="color: lemonchiffon;opacity:100%; font-size: 25px;"></i></a>
+                <a *ngIf=!archivevar style="cursor: pointer;" (click)="togglearchive()"><i class="fa fa-archive"
+                    aria-hidden="true" style="color: lemonchiffon;opacity:10%; font-size: 25px;"></i></a>
+              </span>
+              <span class="ml-3 mr-3">
+                <a *ngIf="!newTask.get('is_text').value" style="cursor: pointer;" (click)="toggletext()"><i class="fa fa-check-square"
+                    aria-hidden="true"
+                    style="text-align: right ;color: lemonchiffon;opacity:90%; font-size: 25px;"></i></a>
+                <a *ngIf="newTask.get('is_text').value" style="cursor: pointer;" (click)="toggletext()"><i class="fa fa-check-square"
+                    aria-hidden="true"
+                    style="text-align: right ;color: lemonchiffon;opacity:10%; font-size: 25px;"></i></a>
+              </span>
+              <span >
+                <a style="cursor: pointer;" class="ml-3 dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bell" aria-hidden="true" style="text-align: right ;color: lemonchiffon;opacity:90%; font-size: 25px;"></i></a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: transparent;">
+                  <input type="datetime-local" class="dropdown-item" name="reminder" placeholder="reminder" formControlName="reminder" style="background-color: lightgray; margin: 0px; padding: 0px;" />
+                </div>
+              </span>
+
+
+            </span>
+            <span class="d-flex mr-5" style="width: 20%; text-align: left;  justify-content:space-around;">
+              <button class="btn btn-dark ml-3" type="button" [disabled]="!newTask.valid"
+                (click)="updateTask(taskIdForModel,newTask.value)" style="padding: 0px; text-align: right; "><i
+                  class="fa fa-floppy-o" aria-hidden="true" style="font-size: 27px;"></i></button>
+              <i class="fa fa-times-circle fa-2x" data-dismiss="modal" aria-label="Close" (click)="closemodal()"
+                style="color: cornsilk;"></i>
+            </span>
+
+
+
+          </div>
+
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-secondary">Save Changes</button> -->
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

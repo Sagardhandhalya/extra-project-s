@@ -1,0 +1,88 @@
+<div class="addcard mt-5">
+  <form [formGroup]="newTask" method="post">
+    <span>
+      <input type="text" class="titleinput" placeholder="Title" formControlName="title" />
+      <a *ngIf=pinvar style="cursor: pointer;" (click)="togglepin()"><i class="fa fa-thumb-tack" aria-hidden="true"
+          style="text-align: right ;color: lemonchiffon;opacity:90%; font-size: 25px;"></i></a>
+      <a *ngIf=!pinvar style="cursor: pointer;" (click)="togglepin()"><i class="fa fa-thumb-tack" aria-hidden="true"
+          style="text-align: right ;color: lemonchiffon;opacity:10%; font-size: 25px;"></i></a>
+    </span>
+    <div *ngIf="showform" formArrayName="todos">
+      <div *ngFor="let todo of todos.controls; let i = index">
+        <div *ngIf="!todo.get('is_completed').value" class="todoform" [formGroupName]="i">
+          <div *ngIf="this.todo.dirty">
+            <input type="checkbox" formControlName="is_completed" class="checkmas" [style.display]="displayvar"/>
+          </div>
+          <div *ngIf="this.todo.pristine" style="color: ivory; font-weight: lighter;">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </div>
+          <input class="custominput" type="text" placeholder="Add Todo" formControlName='content' (keypress)="addTodo(i)"
+            [ngClass]="{'done':todo.get('is_completed').value}"  />
+          <div style="cursor: pointer; width: 20px" (click)="deleteTodo(i)">
+
+            <span *ngIf="this.todo.dirty" aria-hidden="true" style="color: ivory; font-size: 25px;">&times;</span>
+          </div>
+        </div>
+      </div>
+
+      <p style="color: rgb(155, 174, 197);font-size: small;cursor: pointer; margin-bottom: 5px;" (click)=toggleCompleted()> {{icon}}
+        completed </p>
+      <div *ngIf="showComple">
+        <div *ngFor="let todo of todos.controls; let i = index">
+          <div *ngIf="todo.get('is_completed').value" class="todoform" [formGroupName]="i">
+            <input type="checkbox" formControlName="is_completed" [style.display]="displayvar"/>
+            <input class="custominput" type="text" placeholder="Add Todo " formControlName='content' (blur)="addTodo(i)"
+              [ngClass]="{'done':todo.get('is_completed').value}" />
+            <div style="cursor: pointer; width: 20px" (click)="deleteTodo(i)">
+              <span aria-hidden="true" style="color: ivory; font-size: 25px;">&times;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="remindercss" *ngIf="this.reminder.value"> 
+      <span>
+        <i class="fa fa-clock-o" aria-hidden="true" style="padding-right: 10px;"></i>
+        <span>{{this.newTask.get('reminder').value}}</span>
+      </span>
+      <span (click)="clearReminder()"><i class="fa fa-times"></i></span>
+      </div>
+      <hr>
+
+    </div>
+    <div style="width: 100%;display: flex; justify-content:space-between;">
+      <span class="align-items-center" style="width:80%">
+        <input type="color" formControlName="color" style=" height: 30px; width: 30px; padding: 0px; margin: 0px;">
+        <span class="ml-4 mr-3">
+          <a *ngIf=archivevar style="cursor: pointer;" (click)="togglearchive()"><i class="fa fa-archive"
+              aria-hidden="true" style="color: lemonchiffon;opacity:100%; font-size: 25px;"></i></a>
+          <a *ngIf=!archivevar style="cursor: pointer;" (click)="togglearchive()"><i class="fa fa-archive"
+              aria-hidden="true" style="color: lemonchiffon;opacity:10%; font-size: 25px;"></i></a>
+        </span>
+        <span class="ml-3 mr-3">
+          <a *ngIf=!textvar style="cursor: pointer;" (click)="toggletext()"><i class="fa fa-check-square"
+              aria-hidden="true" style="text-align: right ;color: lemonchiffon;opacity:90%; font-size: 25px;"></i></a>
+          <a *ngIf=textvar style="cursor: pointer;" (click)="toggletext()"><i class="fa fa-check-square"
+              aria-hidden="true" style="text-align: right ;color: lemonchiffon;opacity:10%; font-size: 25px;"></i></a>
+        </span>
+                  
+  
+        <span >
+        <a style="cursor: pointer;" class="ml-3 dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-bell" aria-hidden="true" style="text-align: right ;color: lemonchiffon;opacity:90%; font-size: 25px;"></i></a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: transparent;">
+          <input type="datetime-local" class="dropdown-item" placeholder="Title" formControlName="reminder" style="background-color: lightgray; margin: 0px; padding: 0px;" />
+        </div>
+      </span>
+
+      </span>
+      <span style="width: 20%; text-align: left;">
+        <button class="btn btn-dark ml-3" type="button" [disabled]="!newTask.valid" 
+          (click)="createTask(newTask.value)" style="padding: 0px; text-align: right; "><i class="fa fa-floppy-o" aria-hidden="true"
+            style="font-size: 27px;"></i></button>
+      </span>
+    </div>
+  </form>
+
+
+
+</div>

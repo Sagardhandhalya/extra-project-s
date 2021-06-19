@@ -1,0 +1,32 @@
+body{
+    background-color: rgb(32,33,37) ;
+}
+
+.right{
+    width: 100%;
+    margin-top: 10px;
+    transition: 200ms all;
+}
+
+.left{
+   
+    position: fixed;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    transition: 200ms all;
+    background-color: rgb(32,33,37) ;
+}
+
+
+.sidebarmargin{
+    margin-left: 200px;
+}
+.sidebaroff{
+    
+
+  width: 10px;
+  overflow: hidden;
+  margin-right: 200px;
+}
+

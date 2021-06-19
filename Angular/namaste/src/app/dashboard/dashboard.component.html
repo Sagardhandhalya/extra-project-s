@@ -1,0 +1,28 @@
+
+<h1>Dashboard ... </h1>
+
+
+
+<div class="form-group">
+    <p class="alert alert-danger">{{info | uppercase }}</p>
+    <label for="my-select mt-3">Month : </label>
+    <select class="custom-select" name="month" #month (change) = "changemonth(month)" >
+        <option *ngFor = "let i of months">{{i}}</option>
+    </select>
+</div>
+<h2>Your month value is {{month_value}}</h2>
+
+<input class="form-control" #name type="text" (keyup) ="keyup($event , name)">
+
+<button class="btn btn-primaary mb-3" (click) = "Submit(month)">
+    Submit
+</button>
+
+<span *ngIf = "red_true then red else yellow" ></span>
+
+<ng-template  #red > <p class="alert alert-danger">I am red....</p></ng-template>
+<ng-template  #yellow > <p class="alert alert-warning">I am yellow....</p></ng-template>
+ 
+
+<button class="btn btn-danger d-block mt-3" (click)= "toggle($event)">  change color </button>
+

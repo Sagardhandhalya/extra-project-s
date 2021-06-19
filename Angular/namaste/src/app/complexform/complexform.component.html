@@ -1,0 +1,135 @@
+<div class="card mb-5" style="margin-bottom: 200px">
+  <div class="card-header bg-info shadow-xl">ADD NEW TENANT</div>
+  <div class="card-body">
+    <form [formGroup]="newtenant" (ngSubmit)="submit(newtenant.value)">
+      <div class="" formGroupName="HeadDetails">
+        <h1>Head Detais :</h1>
+        <div class="form-group">
+          <label> Name : </label>
+          <input class="form-control" type="text" formControlName="headName" />
+        </div>
+        <div class="form-group">
+          <label>Gender : </label>
+          <select
+            id="my-select"
+            class="form-control"
+            formControlName="headGender"
+          >
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Contact No: </label>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="headContactno"
+          />
+        </div>
+        <div class="form-group">
+          <label> Checkin Data : </label>
+          <input
+            class="form-control"
+            type="date"
+            formControlName="checkinDate"
+          />
+        </div>
+        <div class="form-group">
+          <label> Checkout Date : </label>
+          <input
+            class="form-control"
+            type="date"
+            formControlName="checkoutDate"
+          />
+        </div>
+        <div class="form-group">
+          <label>Room No : </label>
+          <input class="form-control" type="text" formControlName="roomNo" />
+        </div>
+
+        <div class="form-group">
+          <label>Address : </label>
+          <textarea
+            class="form-control"
+            formControlName="address"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div formGroupName="SpouseDetails">
+        <h1>Spouse Details :</h1>
+        <div class="form-group">
+          <label> Name : </label>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="spouseName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Gender :</label>
+          <select class="form-control" formControlName="spouseGender">
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Text</label>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="spouseContactno"
+          />
+        </div>
+      </div>
+
+      <div formArrayName="ChildrenDetails">
+        <h1>Children Details :</h1>
+
+        <div *ngFor="let child of ChildrenDetails.controls; let i = index">
+            <button class="btn btn-danger" (click)="removechild(i)">
+                Delete
+            </button>
+            <h3>Child : {{i}}</h3>
+          <div [formGroupName]="i">
+            <div class="form-group">
+              <label> Name : </label>
+              <input
+                class="form-control"
+                type="text"
+                formControlName="childName"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Gender :</label>
+              <select class="form-control" formControlName="childGender">
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Text</label>
+              <input
+                class="form-control"
+                type="number"
+                formControlName="childAge"
+              />
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <button class="btn btn-primary" [disabled]="!newtenant.valid" type="submit">Submit</button>
+      <button (click) = "addchild()" class="btn btn-info" type="button">Add</button>
+     
+    </form>
+  </div>
+  <div class="card-footer bg-info">Thank you ....</div>
+</div>

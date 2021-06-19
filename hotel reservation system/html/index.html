@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <style>
+        .main-wrapper {
+            background-color: white;
+            border-radius: 15px;
+        }
+
+        .hotel-avatar {
+            width: 100px;
+            height: 100px;
+
+        }
+    </style>
+
+    <title>hotel reservation system</title>
+</head>
+
+<body style="background-color: rgb(106, 191, 240);">
+
+    <div class=" container d-flex text-center align-items-center justify-content-center flex-wrap"
+        style="height: 100vh;">
+
+        <div class="row p-0 p-lg-5 g-0 main-wrapper">
+
+            <!-- svg image -->
+            <div class="col d-none d-lg-flex">
+
+                <!-- <img src="./signinlogo.jpg" alt="svg image"> -->
+                <figure><img src="../assets/signinlogo.jpg" alt="sing up image"></figure>
+            </div>
+            <!-- svg image -->
+
+            <!-- login form -->
+            <div class="col d-flex text-center align-items-center justify-content-center  ">
+                <div class="card bg-white border-0 shadow m-0" style="width: 400px;height:480px">
+                    <div class="card-body">
+
+                        <div id="errors" style="padding: 2px; text-align: left;" role="alert">
+
+                        </div>
+                        <img src="../assets/ht1.png" class="rounded-circle d-block img-thumbnail mx-auto mb-3 hotel-avatar"
+                            alt="image">
+
+                        <a class="btn btn-outline-primary shadow " href="#"><img
+                                src="https://img.icons8.com/color/16/000000/google-logo.png" />
+                            Signup Using Google</a>
+
+                        <p class="">or</p>
+
+                        <!-- singin form -->
+                        <form   class="form" action="../html/dashboard.html" id = "login_form" novalidate>
+                            <div class="input-group mt-3">
+
+                                <span class="input-group-text" id="basic-addon1">@</span>
+                                <input type="email" id="email" name="email" class="form-control"
+                                    placeholder="Email or username" onkeyup="validate_email(this)"
+                                    >
+
+                            </div>
+                            <div class="input-group mt-3 outline-0">
+                                <span class="input-group-text" id="basic-addon1">%</span>
+                                <input class="form-control" id="password" placeholder="password" type="password"
+                                    onkeyup="validate_password(this)">
+                            </div>
+
+                            <div class="form-group mt-4">
+                                <button type="submit" id="submit_button" disabled  class="btn mb-2 btn-primary btn-block"
+                                    > Login </button>
+                            </div>
+
+                        </form>
+
+                        <!-- signin form -->
+
+                        <a href="#" class=" card-link">Forgot password ?</a>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="../js/index.js"></script>
+</body>
+
+</html>

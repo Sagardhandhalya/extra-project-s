@@ -1,0 +1,13 @@
+
+<app-header [sidebarOn]="sidebaropen" (sidebarToggleEvent)="toggle($event)" ></app-header>
+<div class="d-flex container " style="margin-top: 50px">
+<app-sidebar class="shadow left" [ngClass]="{'sidebaroff': !sidebaropen}"></app-sidebar>
+<div class="right" [ngClass]="{'sidebarmargin': sidebaropen}">
+<app-addtask (taskCreated) = "addNewTask($event)" ></app-addtask> 
+<app-tasklist [taskList]="tasks" ></app-tasklist>
+</div> 
+</div> 
+
+
+
+

@@ -1,0 +1,22 @@
+<div style="text-align:center">
+
+    <h1>Image Cropper !!!</h1>
+    <br><br>
+    <input type="file" id="file-upload" (input)="receiveFile($event)" />
+<br><br>
+    <irc-image-resizer-cropper
+    
+      [sourceImage]="fileReceived"
+      [lensHeight]="200"
+      [lensWidth]="200"
+      [autoCrop]="false"
+      [roundCrop]="true"
+      [previewCrop]="true"
+      [borderColor]="'red'"
+      [backgroundOpacity]="0.7"
+      (croppedImage)="receiveCroppedImage($event)"
+      (error)="receiveError($event)"
+    ></irc-image-resizer-cropper>
+
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,18 @@
+<div class="mt-3 mb-3">
+<input  type="file"  (input)="loadImage($event)">
+  <button class="btn btn-primary mr-3" *ngIf="inputImage"(click) = "cropImage()">Crop</button>
+  <a class="btn btn-info " *ngIf="inputImage"  [href]="outputImage"  download >Download</a>
+</div>
+<div >
+  <img [width]="maxsize" [height]="maxsize" *ngIf="inputImage" [src]="inputImage" alt="inputimage" >
+  <canvas #canva width="0px"  id="canvas" height="0px"></canvas>
+  
+</div>
+
+
+
+  
+
+
+
+

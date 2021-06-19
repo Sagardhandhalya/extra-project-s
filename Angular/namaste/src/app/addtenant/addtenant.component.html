@@ -1,0 +1,33 @@
+<div class="container" style="height: 100vh; background-color: red;">
+
+    <h1> Add Tenant </h1>
+
+
+    <button class="btn btn-primary mr-3 mb-4" (click)="toggletable()"> Email only</button>
+    <button class="btn btn-primary mr-3 mb-4 " (click)="toggletable()"> Name only</button>
+
+    <table class="table table-light">
+        <tbody>
+
+           
+            <tr *ngFor="let row of table">
+
+                <td *ngIf="name then nametd else emailtd"></td>
+                <ng-template #nametd>
+                    <td>{{row.name}}</td>
+                </ng-template>
+                <ng-template #emailtd>
+                    <td>{{row.email}}</td>
+                </ng-template>
+
+
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <h1>Service ar tested on this component <div class=""></div>
+    </h1>
+
+</div>

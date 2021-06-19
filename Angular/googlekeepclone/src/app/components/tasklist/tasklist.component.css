@@ -1,0 +1,139 @@
+hr{
+    margin: 0;
+    background-color: white;
+    margin-bottom: 2px;
+    opacity: 40%;
+}
+p{
+    line-height: px;
+    padding: 3px;
+    margin: 0px;
+    word-wrap: break-word;
+}
+h5{
+    height: 40px;
+}
+.custom{
+    opacity: 70%;
+    border-radius: 5%;
+    /* margin-left: 3%; */
+    /* margin-right: 3%; */
+    z-index: 1;
+    border-color: wheat ;
+    min-width: 200px;
+    max-width: 200px;
+}
+.done{
+    text-decoration: line-through;
+}
+
+
+
+
+.addcard{
+    background-color:transparent;
+    border: 0.2px solid rgba(255,255,255,.3);
+    box-shadow: 2px 2px 2px 2px rgb(36, 34, 32);
+    border-radius: 10px;
+    max-width: 550px;
+    min-width: 400px;
+    margin: 0px auto;
+    padding: 15px;
+    z-index: 1;
+    /* height: 200px; */
+}
+
+.todoform{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+    padding: 5px;
+    line-height: 1px;
+}
+input{
+    background-color: transparent;
+}
+
+.titleinput{
+    outline: none;
+    border:none;
+    width: 95%;
+    font-size: 20px;
+    /* border-bottom: rgb(95,99,104) 0.4px solid; */
+    /* padding: 5px; */
+    color: white;
+    z-index: 1;
+    margin-left: 5px;
+}
+
+
+
+.custominput{
+outline: none;
+width: 100%;
+border: none;
+margin-left: 15px;
+color: white;
+padding: 5px;
+line-height: 10px;
+}
+
+.custominput:focus{
+
+   /* border-top: 1px rgb(95,99,104) solid ; */
+    border-bottom: 1px rgb(95,99,104) solid;
+
+}
+input[type='checkbox']{
+    background-color: transparent;
+}
+
+input[type='color']:focus-visible{
+    border: 0px;
+}
+input[type='color']{
+    border: 0px;
+}
+.checkmas{
+    display: inline;
+}
+
+.vis{
+    display: none;
+}
+
+/* .customcard:hover{
+    display: none;
+} */
+.remindercs{
+    color: white;
+     border-radius: 100px;
+      border: 1px solid rgb(95,99,104) ;
+      display: flex;
+      width: 210px;
+      overflow: hidden;
+      flex-wrap: nowrap;
+    font-size: 15px;
+       padding-left: 5px;
+       padding-right: 5px;
+       margin-bottom: 5px;
+    justify-content: space-between;
+    background-color: black;
+}
+
+.remindercss{
+    color: white;
+     border-radius: 100px;
+      border: 1px solid rgb(95,99,104) ;
+      display: flex;
+      width: 175px;
+      overflow: hidden;
+      flex-wrap: nowrap;
+    font-size: 11px;
+       padding-left: 5px;
+       padding-right: 5px;
+       margin-bottom: 5px;
+    justify-content: space-between;
+    background-color: black;
+}

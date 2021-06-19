@@ -1,0 +1,15 @@
+
+
+  <h1 appChangeText>Parent component ....</h1>
+
+<div>
+  <label for="parentinput">Enter Text</label>
+  <br><br>
+  <input type="text" name="pinput" [(ngModel)]="textValue" />
+  <p>{{textValue}}</p>
+</div>
+
+<app-child [textValue]="textValue" (childTextChange)="inputChangeFromChild($event)">Sagar;....</app-child>
+<br><br>
+<a routerLink="/dashboard/day2" >Day2</a>
+<app-promise></app-promise>

@@ -1,0 +1,71 @@
+
+.navbarcolor {
+  background-color: #1619dd;
+}
+
+.barcolor{
+    background-color: #389bdd;
+}
+
+.hide{
+    display: none;
+}
+
+.nav-link-svg{
+    width: 20%;
+    height: 20%;
+    fill: rgb(19, 5, 19);
+    margin-right: 5%;
+    
+}
+
+body{
+    background-color: #6ABFF0;
+}
+.nav-link-text{
+    line-height: 20%;
+}
+.wrapper {
+  margin-top: 3.5rem;
+}
+
+.nav-link:hover{
+    background-color: white;
+}
+
+.sidebaroff{
+    margin-left: 11rem;
+    cursor: pointer;
+    
+}
+
+.sidebaron{
+    margin-left: 1.5rem;
+    cursor: pointer;
+}
+
+ .sideMenu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  margin-top: 3.5rem;
+  left: 0;
+  width: 12.5rem;
+  -webkit-transition: all ease 0.1s;
+  transition: all ease 0.1s;
+
+}
+
+.content {
+  width: 100%;
+  margin-left: 14rem;
+  -webkit-transition: all ease 0.25s;
+  transition: all ease 0.25s;
+  
+}
+
+.hotel-avatar{
+    width: 60%;
+    height: 60%;
+    border: none;
+}

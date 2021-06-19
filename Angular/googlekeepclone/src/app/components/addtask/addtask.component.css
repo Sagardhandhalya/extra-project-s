@@ -1,0 +1,89 @@
+.addcard{
+    background-color:transparent;
+    border: 0.2px solid rgba(255,255,255,.3);
+    box-shadow: 2px 2px 2px 2px rgb(36, 34, 32);
+    border-radius: 10px;
+    max-width: 550px;
+    min-width: 400px;
+    margin: 0px auto;
+    padding: 15px;
+    z-index: 1;
+    /* height: 200px; */
+}
+
+.todoform{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+    padding: 5px;
+    line-height: 1px;
+}
+input{
+    background-color: transparent;
+}
+
+.titleinput{
+    outline: none;
+    border:none;
+    width: 95%;
+    font-size: 20px;
+    /* border-bottom: rgb(95,99,104) 0.4px solid; */
+    /* padding: 5px; */
+    color: white;
+    z-index: 1;
+    margin-left: 5px;
+}
+
+.done{
+    text-decoration: line-through;
+}
+hr{
+    margin: 0px;
+    background-color: rgb(95,99,104);
+    margin-bottom: 5px;
+    opacity: 40%;
+}
+
+.custominput{
+outline: none;
+width: 100%;
+border: none;
+margin-left: 15px;
+color: white;
+padding: 5px;
+line-height: 10px;
+}
+
+.custominput:focus{
+
+   /* border-top: 1px rgb(95,99,104) solid ; */
+    border-bottom: 1px rgb(95,99,104) solid;
+
+}
+input[type='checkbox']{
+    background-color: transparent;
+}
+
+input[type='color']:focus-visible{
+    border: 0px;
+}
+input[type='color']{
+    border: 0px;
+}
+.checkmas{
+    display: inline;
+}
+
+.remindercss{
+    color: white;
+     border-radius: 100px;
+      border: 1px solid rgb(95,99,104) ;
+      display: flex;
+      width: 40%;
+      min-width: 200px;
+       padding-left: 5px;
+       padding-right: 5px;
+       margin-bottom: 5px;
+    justify-content: space-between;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Form</title>
+  </head>
+  <body>
+    <h1>Login Form</h1>
+    <form method="post"  id="form">
+      <div>
+        <label for="email">Email : </label>
+        <input type="text" name="email" id="email" />
+      </div>
+      <div>
+        <label for="password">Password : </label>
+        <input type="text" name="password" id="password" />
+      </div>
+
+      <button>Submit</button>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </body>
+
+  <script>
+    $( "form" ).on( "submit", function( event ) {
+    event.preventDefault();
+        const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      let formData = {
+        'username': email,
+        'password': password,
+      };
+  var res = $.post('http://127.0.0.1:8000/login', JSON.stringify(formData),function (data)
+      {
+        alert('hi......');
+        console.log(data);
+      })
+
+
+  });
+
+  </script>
+</html>

@@ -1,0 +1,82 @@
+<div class="main">
+  <div
+    class="container d-flex text-center align-items-center justify-content-center flex-wrap"
+    style="height: 100vh"
+  >
+    <div class="row p-0 p-lg-5 main-wrapper">
+      <!-- svg image -->
+      <div class="col d-none d-lg-flex">
+        <!-- <img src="./signinlogo.jpg" alt="svg image"> -->
+        <figure>
+          <img src="../assets/signinlogo.jpg" alt="sing up image" />
+        </figure>
+      </div>
+      <!-- svg image -->
+
+      <!-- login form -->
+      <div
+        class="col d-flex text-center align-items-center justify-content-center"
+      >
+        <div class="card shadow-xl m-0" style="width: 400px; height: 480px">
+          <div class="card-body">
+            <div
+              id="errors"
+              style="padding: 2px; text-align: left"
+              role="alert"
+            ></div>
+            <img
+              src="../assets/ht1.png"
+              class="rounded-circle d-block img-thumbnail mx-auto mb-3 hotel-avatar"
+              alt="image"
+            />
+
+            <a class="btn btn-outline-primary shadow" href="#"
+              ><img
+                src="https://img.icons8.com/color/16/000000/google-logo.png"
+              />
+              Signup Using Google</a
+            >
+
+            <p class="">or</p>
+
+            <!-- singin form -->
+            <form [formGroup]="admin" (ngSubmit) = "login(admin.value)">
+              <div class="input-group mt-3">
+                <span class="input-group-text">@</span>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email or username"
+                  formControlName="email"
+                />
+              </div>
+              <div class="input-group mt-3 outline-0">
+                <span class="input-group-text">%</span>
+                <input
+                  class="form-control"
+                  placeholder="password"
+                  type="password"
+                  formControlName="password"
+                />
+              </div>
+
+              <div class="form-group mt-4">
+                <button
+                  type="submit"
+                  [disabled]="!admin.valid"
+                  class="btn mb-2 btn-primary"
+                >
+                  Login
+                </button>
+              </div>
+            </form>
+
+            <!-- signin form -->
+
+            <a href="#" class="card-link">Forgot password ?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

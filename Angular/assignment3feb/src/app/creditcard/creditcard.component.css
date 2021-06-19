@@ -1,0 +1,25 @@
+
+input.ng-dirty.ng-invalid {
+    border: 2px red solid;
+}
+
+input.ng-dirty.ng-valid {
+    border: 2px green solid;
+}
+
+input.ng-touched.ng-invalid {
+    border: 2px red solid;
+}
+
+input.ng-touched.ng-valid {
+    border: 2px green solid;
+}
+
+
+input.ng-dirty.ng-touched.ng-invalid {
+    border: 2px red solid;
+}
+
+input.ng-dirty.ng-touched.ng-valid {
+    border: 2px green solid;
+}

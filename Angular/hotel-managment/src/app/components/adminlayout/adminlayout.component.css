@@ -1,0 +1,28 @@
+.right{
+    width: 100%;
+    
+    margin-top: 50px;
+    transition: 200ms all;
+}
+
+.left{
+   
+    position: fixed;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    transition: 200ms all;
+    background-color: rgb(230, 84, 217) ;
+}
+
+
+.sidebarmargin{
+    margin-left: 200px;
+}
+.sidebaroff{
+    
+
+  width: 0px;
+  overflow: hidden;
+}
+

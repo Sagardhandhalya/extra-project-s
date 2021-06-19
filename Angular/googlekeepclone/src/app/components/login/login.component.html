@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Searce Keep</title>
+    
+</head>
+<body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto my-5">
+
+    
+          <!-- Card Start -->
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              <h5 class="card-title text-center">Searce Keep</h5>
+            
+
+              <div *ngIf="showError" class="alert alert-warning alert-dismissible fade show" role="alert">
+                
+                <strong>Login Failed Try again</strong> 
+              </div>
+              
+              <script>
+                $(".alert").alert();
+              </script>
+              <form #myform = ngForm class="form-signin" name="myform" id="myform" method="POST" (ngSubmit)=Login()>
+
+                <!-- Username Field -->
+                <!-- Todo : login[[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$] and register has different username pettern i fixed it bith has => "[a-zA-Z][a-zA-Z]+" -->
+               
+              
+               
+                <div class="form-group form-label-group">
+                  <input type="text" id="username" name="username" class="form-control text-white" placeholder="Enter your Username" required autofocus pattern="[a-zA-Z][a-zA-Z]+" [(ngModel)] = "userlogin.username" #username='ngModel'>
+                  <div class="text-danger" *ngIf="(username.touched || username.dirty) && !username.valid">
+                    <div *ngIf="username.errors.required">Username is required</div>
+                    <div *ngIf="username.errors.pattern">Username is not valid</div>
+                  </div>
+                </div>
+  
+                <!-- Password Field -->
+                <div class="form-group form-label-group">
+                  <input type="password" id="password" name="password" class="form-control text-white" placeholder="Enter your Password" required minlength = 8 [(ngModel)] = "userlogin.password" #password='ngModel'>
+                  <div class="text-danger" *ngIf="(password.touched || password.dirty) && !password.valid">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                    <div *ngIf="password.errors.minlength">Password is not valid</div>
+                  </div>
+                </div>
+  
+                <!-- Forget Password -->
+                <div class="pl-2 mb-3">
+                    <a style="color: yellowgreen;" href="#" class="card-link">Forget Password?</a>
+                </div>
+
+                <!-- Submit Button -->
+                <button id="submit" class="btn btn-lg btn-warning btn-block text-uppercase" type="submit" [disabled]=!myform.valid>Sign in</button>
+
+                <!-- Registration redirect -->
+                <div class="text-center pt-2">
+                  <span class="txt1" style="color: yellow;">Not Registered</span>&nbsp;
+                  <a class="txt2" style="color: yellowgreen;" routerLink="/register">Register Here</a>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- Card End -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fa fa-google" aria-hidden="true"></i> Sign in with Google</button>
+                <hr class="my-4">
+                <p class="text-center py-2">OR</p> -->
